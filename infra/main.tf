@@ -3,12 +3,12 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "rg" {
-  name     = "myResourceGroup"  # Reemplaza "myResourceGroup" con el nombre deseado para tu grupo de recursos
+  name     = "webappspoc-franc"  # Reemplaza "myResourceGroup" con el nombre deseado para tu grupo de recursos
   location = "East US"  # Reemplaza "East US" con la región deseada
 }
 
 resource "azurerm_storage_account" "sa" {
-  name                     = "mystorageacct"  # Reemplaza "mystorageacct" con un nombre único para la cuenta de almacenamiento
+  name                     = "webappspoc-franc"  # Reemplaza "mystorageacct" con un nombre único para la cuenta de almacenamiento
   resource_group_name      = azurerm_resource_group.rg.name
   location                 = azurerm_resource_group.rg.location
   account_tier             = "Standard"
@@ -16,13 +16,13 @@ resource "azurerm_storage_account" "sa" {
 }
 
 resource "azurerm_storage_container" "tfstate" {
-  name                  = "terraform-state"  # Reemplaza "terraform-state" si deseas un nombre diferente para el contenedor
+  name                  = "terraform-state-fg"  # Reemplaza "terraform-state" si deseas un nombre diferente para el contenedor
   storage_account_name  = azurerm_storage_account.sa.name
   container_access_type = "private"
 }
 
 resource "azurerm_app_service_plan" "asp" {
-  name                = "myAppServicePlan"  # Reemplaza "myAppServicePlan" con el nombre deseado para el plan de servicio
+  name                = "webappspoc-franc"  # Reemplaza "myAppServicePlan" con el nombre deseado para el plan de servicio
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   sku {
@@ -32,7 +32,7 @@ resource "azurerm_app_service_plan" "asp" {
 }
 
 resource "azurerm_app_service" "app" {
-  name                = "myAppService"  # Reemplaza "myAppService" con el nombre deseado para la aplicación web
+  name                = "webappspoc-franc"  # Reemplaza "myAppService" con el nombre deseado para la aplicación web
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   app_service_plan_id = azurerm_app_service_plan.asp.id
