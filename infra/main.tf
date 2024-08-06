@@ -4,7 +4,7 @@ provider "azurerm" {
 
 resource "azurerm_resource_group" "example" {
   name     = "webapppocfranc-resources"
-  location = "westeurope"
+  location = "East US"
 
   tags = {
     Owner    = "Pod2"
@@ -17,7 +17,7 @@ resource "azurerm_resource_group" "example" {
 
 resource "azurerm_app_service_plan" "example" {
   name                = "webapppocfranc-appserviceplan"
-  location            = "westeurope"
+  location            = "East US"
   resource_group_name = azurerm_resource_group.example.name
   kind                = "Windows"
   sku {
@@ -36,7 +36,7 @@ resource "azurerm_app_service_plan" "example" {
 
 resource "azurerm_app_service" "example" {
   name                = "webapppocfranc-appservice"
-  location            = "westeurope"
+  location            = "East US"
   resource_group_name = azurerm_resource_group.example.name
   app_service_plan_id = azurerm_app_service_plan.example.id
 
