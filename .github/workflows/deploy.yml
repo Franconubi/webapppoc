@@ -6,7 +6,31 @@ on:
       - main
 
 jobs:
-  build-and-deploy:
+  terraform:
+    name: 'Terraform Apply'
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Terraform
+      uses: hashicorp/setup-terraform@v1
+
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Initialize Terraform
+      run: terraform init
+
+    - name: Apply Terraform
+      run: terraform apply -auto-approve
+
+  deploy:
+    name: 'Deploy to Azure Web App'
+    needs: terraform
     runs-on: ubuntu-latest
 
     steps:
@@ -16,31 +40,22 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '14'  # Reemplaza '14' con la versión de Node.js que tu aplicación requiere
+        node-version: '14'
 
     - name: Install dependencies
       run: npm install
 
+    - name: Build project
+      run: npm run build
+
     - name: Azure Login
       uses: azure/login@v1
       with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}  # Asegúrate de que este secreto esté configurado en GitHub
-
-    - name: Set up Terraform
-      uses: hashicorp/setup-terraform@v1
-
-    - name: Initialize Terraform
-      env:
-        ARM_ACCESS_KEY: ${{ secrets.AZURE_STORAGE_KEY }}
-      run: terraform -chdir=infra init -backend-config="storage_account_name=${{ secrets.AZURE_STORAGE_ACCOUNT }}" -backend-config="container_name=terraform-state" -backend-config="key=terraform.tfstate" -backend-config="access_key=${{ secrets.AZURE_STORAGE_KEY }}" -backend-config="resource_group_name=${{ secrets.AZURE_RESOURCE_GROUP }}"
-
-    - name: Apply Terraform
-      env:
-        ARM_ACCESS_KEY: ${{ secrets.AZURE_STORAGE_KEY }}
-      run: terraform -chdir=infra apply -auto-approve
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
 
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
       with:
-        app-name: 'webappspoc-franc'  # Reemplaza 'myAppService' con el nombre de tu aplicación web
+        app-name: 'example-appservice'
+        slot-name: 'production'
         package: '.'
