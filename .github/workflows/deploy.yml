@@ -26,9 +26,11 @@ jobs:
 
     - name: Initialize Terraform
       run: terraform init
+      working-directory: ./infra  # Asegúrate de que apunte al directorio con los archivos .tf
 
     - name: Apply Terraform
       run: terraform apply -auto-approve
+      working-directory: ./infra  # Asegúrate de que apunte al directorio con los archivos .tf
 
   deploy:
     name: 'Deploy to Azure Web App'
@@ -58,6 +60,6 @@ jobs:
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
       with:
-        app-name: 'webapppocfranc-appservice'  # Asegúrate de que coincida con el nombre definido en Terraform
-        slot-name: 'poc'  # Usa 'production' si no tienes slots definidos
+        app-name: 'webapppocfranc-appservice'
+        slot-name: 'production'
         package: '.'
