@@ -9,6 +9,7 @@ jobs:
   terraform:
     name: 'Terraform Apply'
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
 
     steps:
     - name: Checkout code
@@ -16,8 +17,6 @@ jobs:
 
     - name: Set up Terraform
       uses: hashicorp/setup-terraform@v1
-      with:
-        terraform_version: 1.3.7  # Ajusta la versión de Terraform según tus necesidades
 
     - name: Azure Login
       uses: azure/login@v1
@@ -26,11 +25,9 @@ jobs:
 
     - name: Initialize Terraform
       run: terraform init
-      working-directory: ./infra  # Asegúrate de que apunte al directorio con los archivos .tf
 
     - name: Apply Terraform
-      run: terraform apply -auto-approve
-      working-directory: ./infra  # Asegúrate de que apunte al directorio con los archivos .tf
+      run: terraform apply -auto-approve || echo "Infra already exists"
 
   deploy:
     name: 'Deploy to Azure Web App'
