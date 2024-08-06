@@ -9,7 +9,6 @@ jobs:
   terraform:
     name: 'Terraform Apply'
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
 
     steps:
     - name: Checkout code
@@ -22,6 +21,9 @@ jobs:
       uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Change directory to infra
+      run: cd infra
 
     - name: Initialize Terraform
       run: terraform init
@@ -58,5 +60,5 @@ jobs:
       uses: azure/webapps-deploy@v2
       with:
         app-name: 'webapppocfranc-appservice'
-        slot-name: 'poc'
+        slot-name: 'production'
         package: '.'
