@@ -2,7 +2,7 @@
 #!/bin/bash
 
 # Variables
-AZURE_SUBSCRIPTION_ID="f6dbe5ba-5b80-4470-a15d-606190555276"
+AZURE_SUBSCRIPTION_ID="ade8ab0a-d71d-4489-81cb-4e23f3dc53bb"
 AZURE_RESOURCE_GROUP="webappspoc-franc"
 AZURE_SERVICE_PRINCIPAL_NAME="webappspoc-franc"
 TAGS="createdby='Franco Galoppo' Environment='Testing' owner='Pod2' ProyectType='labs' AREA='Servicios'"

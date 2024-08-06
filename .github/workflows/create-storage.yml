@@ -16,7 +16,7 @@ jobs:
     - name: Azure Login
       uses: azure/login@v1
       with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}  # Asegúrate de que este secreto esté configurado en GitHub
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
 
     - name: Set up Terraform
       uses: hashicorp/setup-terraform@v1
@@ -40,22 +40,22 @@ jobs:
       run: echo "##[set-output name=resource_group;]$(terraform -chdir=infra output -raw resource_group_name)"
 
     - name: Create storage key secret
-      uses: peter-evans/create-or-update-secret@v3
+      uses: nikhilsbhat/create-secret-action@v1
       with:
-        secret: AZURE_STORAGE_KEY
-        token: ${{ secrets.GITHUB_TOKEN }}
-        value: ${{ steps.storage-key.outputs.storage_key }}
+        name: AZURE_STORAGE_KEY
+        secret: ${{ steps.storage-key.outputs.storage_key }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Create storage account name secret
-      uses: peter-evans/create-or-update-secret@v3
+      uses: nikhilsbhat/create-secret-action@v1
       with:
-        secret: AZURE_STORAGE_ACCOUNT
-        token: ${{ secrets.GITHUB_TOKEN }}
-        value: ${{ steps.storage-name.outputs.storage_name }}
+        name: AZURE_STORAGE_ACCOUNT
+        secret: ${{ steps.storage-name.outputs.storage_name }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Create resource group name secret
-      uses: peter-evans/create-or-update-secret@v3
+      uses: nikhilsbhat/create-secret-action@v1
       with:
-        secret: AZURE_RESOURCE_GROUP
-        token: ${{ secrets.GITHUB_TOKEN }}
-        value: ${{ steps.resource-group.outputs.resource_group }}
+        name: AZURE_RESOURCE_GROUP
+        secret: ${{ steps.resource-group.outputs.resource_group }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
