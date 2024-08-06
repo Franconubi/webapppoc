@@ -51,4 +51,4 @@ resource "azurerm_app_service" "example" {
     Pod      = "2"
     Deadline = "SERVICIOS"
   }
-}
+} 
