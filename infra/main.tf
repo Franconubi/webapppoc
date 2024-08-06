@@ -31,3 +31,4 @@ resource "azurerm_app_service" "example" {
     "WEBSITE_RUN_FROM_PACKAGE" = "1"
   }
 }
+
