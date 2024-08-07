@@ -9,7 +9,7 @@ TAGS="Owner=Pod2 CreatedBy=FrancoGaloppo Project=labs Pod=2 Deadline=SERVICIOS"
 # Service Principal credentials
 SP_APP_ID="$appid"  # Reemplaza con tu Service Principal App ID
 SP_PASSWORD="$secret"  # Reemplaza con tu Service Principal Secret
-TENANT_ID="tenantid"  # Reemplaza con tu Tenant ID
+TENANT_ID="$tenantid"  # Reemplaza con tu Tenant ID
 
 # Login to Azure using Service Principal
 az login --service-principal -u $SP_APP_ID -p $SP_PASSWORD --tenant $TENANT_ID
