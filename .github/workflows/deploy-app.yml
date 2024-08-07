@@ -1,4 +1,4 @@
-name: App Deploy
+name: Deploy App
 
 on:
   push:
@@ -6,8 +6,8 @@ on:
       - main
 
 jobs:
-  deploy:
-    name: 'Deploy to Azure Web App'
+  build:
+    name: 'Build and Deploy App'
     runs-on: ubuntu-latest
 
     steps:
@@ -34,4 +34,5 @@ jobs:
       uses: azure/webapps-deploy@v2
       with:
         app-name: 'webapppocfranc-appservice'
-        package: '.'
+        slot-name: 'production'
+        package: './build'
