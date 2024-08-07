@@ -8,6 +8,10 @@ jobs:
     name: 'Terraform Apply'
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: ./infra
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -21,7 +25,7 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
     - name: Initialize Terraform
-      run: terraform init -backend-config="resource_group_name=tfstate-resources-franco" -backend-config="storage_account_name=tfstatedpocfran" -backend-config="container_name=tfstate-franco" -backend-config="key=terraform.tfstate" -chdir=./infra
+      run: terraform init -backend-config="resource_group_name=tfstate-resources-franco" -backend-config="storage_account_name=tfstatedpocfran" -backend-config="container_name=tfstate-franco" -backend-config="key=terraform.tfstate"
 
     - name: Apply Terraform
-      run: terraform apply -auto-approve -chdir=./infra || echo "Infra already exists"
+      run: terraform apply -auto-approve || echo "Infra already exists"
