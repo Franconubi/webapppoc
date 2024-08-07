@@ -19,7 +19,7 @@ resource "azurerm_resource_group" "example" {
     CreatedBy  = "FrancoGaloppo"
     Project    = "labs"
     Pod        = "2"
-    Coe        = 1
+    Coe        = "1"
     Deadline   = "SERVICIOS"
   }
 }
@@ -37,7 +37,7 @@ resource "azurerm_app_service_plan" "example" {
     CreatedBy  = "FrancoGaloppo"
     Project    = "labs"
     Pod        = "2"
-    Coe        = 1
+    Coe        = "1"
     Deadline   = "SERVICIOS"
   }
 }
@@ -53,7 +53,7 @@ resource "azurerm_app_service" "example" {
     CreatedBy  = "FrancoGaloppo"
     Project    = "labs"
     Pod        = "2"
-    Coe        = 1
+    Coe        = "1"
     Deadline   = "SERVICIOS"
   }
 }
