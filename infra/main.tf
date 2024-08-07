@@ -1,8 +1,8 @@
 terraform {
   backend "azurerm" {
-    resource_group_name   = "tfstate-resources-franco"
-    storage_account_name  = "tfstatedpocfran"
-    container_name        = "tfstate-franco"
+    resource_group_name   = "tfstate-resources-franco1"
+    storage_account_name  = "tfstatedpocfran1"
+    container_name        = "tfstate-franco1"
     key                   = "terraform.tfstate"
   }
 }
