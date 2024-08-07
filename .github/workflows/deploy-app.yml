@@ -34,5 +34,5 @@ jobs:
       uses: azure/webapps-deploy@v2
       with:
         app-name: 'webapppocfranc-appservice'
-        slot-name: 'production'
-        package: './build'
+        slot-name: 'poc'
+        package: '.'
