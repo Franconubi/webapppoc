@@ -22,8 +22,9 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: Build project
-      run: npm run build
+    # Omite el paso de build si no hay script de build en package.json
+    # - name: Build project
+    #   run: npm run build
 
     - name: Azure Login
       uses: azure/login@v1
@@ -34,4 +35,4 @@ jobs:
       uses: azure/webapps-deploy@v2
       with:
         app-name: 'webapppocfranc-appservice'
-        package: '.'
+        package: './src'  # Ajusta esto si el código fuente está en otra carpeta
