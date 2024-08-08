@@ -22,3 +22,7 @@ Dentro de la carpeta script-tools se encuentra los siguiente script de Bash
 - **storage-tfstate-creeated** este se ejecuta y permite crear un grupo de recursos, una cuenta de almacenamiento y un contenedor de blobs para almacenar el estado de Terraform, el cual puede ser de acceso para los usuarios que participen del proceso de despliegue de la infraestructura necesaria para que funcione la webapp de azure
 
 
+
+The background color is `#ffffff` for light mode and `#000000` for dark mode.
+
+
