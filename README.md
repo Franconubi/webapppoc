@@ -15,14 +15,14 @@ Este proyecto guía a través del proceso de despliegue de una aplicación Node.
 
 ### Crear un Service principal, Resource Group y una Storage Account
 
-Dentro de la carpeta script-tools se encuentra los siguiente script de Bash 
+Dentro de la carpeta `script-tools` se encuentra los siguiente script de Bash 
 
-- **azure-poc-franco** Este script se ejecuta para crean un service principal en la cuenta de azure el cual sirve para registrar la aplicacion y poder realizar modificacion en azure (tener presente que la cuenta desde donde se ejecuta debe tener permisos de colaborar, de lo contario no va a funcionar)
+- **`azure-poc-franco`** Este script se ejecuta para crean un service principal en la cuenta de azure el cual sirve para registrar la aplicacion y poder realizar modificacion en azure (tener presente que la cuenta desde donde se ejecuta debe tener permisos de colaborar, de lo contario no va a funcionar)
 
-- **storage-tfstate-creeated** este se ejecuta y permite crear un grupo de recursos, una cuenta de almacenamiento y un contenedor de blobs para almacenar el estado de Terraform, el cual puede ser de acceso para los usuarios que participen del proceso de despliegue de la infraestructura necesaria para que funcione la webapp de azure
+- **`storage-tfstate-creeated`** este se ejecuta y permite crear un grupo de recursos, una cuenta de almacenamiento y un contenedor de blobs para almacenar el estado de Terraform, el cual puede ser de acceso para los usuarios que participen del proceso de despliegue de la infraestructura necesaria para que funcione la webapp de azure
 
 
 
-The background color is `#ffffff` for light mode and `#000000` for dark mode.
+
 
 
