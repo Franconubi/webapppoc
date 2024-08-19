@@ -35,4 +35,5 @@ jobs:
       uses: azure/webapps-deploy@v2
       with:
         app-name: 'webapppocfranc-appservice'
+        slot-name: 'Production'
         package: './my-node-app/src'  # Ajusta esto si el código fuente está en otra carpeta
