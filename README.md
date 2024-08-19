@@ -6,8 +6,8 @@ Este proyecto guía a través del proceso de despliegue de una aplicación Node.
 
 ## Direcciones a los diferentes ambientes
 
-Production: https://webapppocfranc-appservice.azurewebsites.net/
-Qa: https://webapppocfranc-appservice-qa.azurewebsites.net/
+- Production: https://webapppocfranc-appservice.azurewebsites.net/
+- Qa: https://webapppocfranc-appservice-qa.azurewebsites.net/
 
 ## Requisitos Previos
 
