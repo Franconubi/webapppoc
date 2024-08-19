@@ -34,6 +34,6 @@ jobs:
     - name: Deploy to Azure Web App Slot (QA)
       uses: azure/webapps-deploy@v2
       with:
-        app-name: 'webapppocfranc-appservice-qa'
+        app-name: 'webapppocfranc-appservice'
         slot-name: 'QA'
         package: './my-node-app/src'
