@@ -35,4 +35,4 @@ jobs:
       with:
         app-name: 'webapppocfranc-appservice'
         slot-name: 'QA'
-        package: '.'
+        package: './my-node-app/src'
