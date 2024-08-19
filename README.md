@@ -4,6 +4,11 @@
 
 Este proyecto guía a través del proceso de despliegue de una aplicación Node.js en Azure App Service, utilizando GitHub Actions para automatizar el flujo de trabajo. Este enfoque asegura que cada vez que se realicen cambios en el código, la aplicación se despliegue de manera eficiente y sin intervención manual.
 
+## Direcciones a los diferentes ambientes
+
+Production: https://webapppocfranc-appservice.azurewebsites.net/
+Qa: https://webapppocfranc-appservice-qa.azurewebsites.net/
+
 ## Requisitos Previos
 
 - **Cuenta de Azure**: Con permisos para crear y gestionar recursos.
@@ -55,6 +60,12 @@ Es importante asegurarse de que la variable AZURE_CREDENTIALS esté configurada 
 El archivo deploy-app.yml define el flujo de trabajo para desplegar la aplicación en Azure App Service. Contiene una serie de trabajos (jobs) que son necesarios para garantizar que la aplicación funcione correctamente en el entorno de Azure.
 
 Este flujo de trabajo se activa automáticamente cada vez que se realiza un push a la rama main del repositorio. GitHub Actions ejecuta los pasos necesarios, como la instalación de dependencias, la construcción del proyecto y finalmente, el despliegue de la aplicación en Azure.
+
+## Ambiente QA
+
+Además del entorno de producción, esta aplicación cuenta con un ambiente de pruebas que se encuentra en el slot QA dentro del mismo Azure App Service.
+
+Despliegue en QA: Para desplegar en este ambiente, simplemente realiza modificaciones en la rama QA del repositorio en GitHub, y el flujo de trabajo se encargará de desplegar la versión en dicho slot.
 
 
 
