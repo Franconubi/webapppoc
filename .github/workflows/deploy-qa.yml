@@ -1,0 +1,38 @@
+name: Deploy to QA Slot
+
+on:
+  push:
+    branches:
+      - qa
+
+jobs:
+  build:
+    name: 'Build and Deploy App to QA'
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build project
+      run: npm run build
+
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Deploy to Azure Web App Slot (QA)
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: 'webapppocfranc-appservice'
+        slot-name: 'QA'
+        package: '.'
