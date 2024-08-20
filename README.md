@@ -59,7 +59,7 @@ Es importante asegurarse de que la variable AZURE_CREDENTIALS esté configurada 
 
 El archivo deploy-app.yml define el flujo de trabajo para desplegar la aplicación en Azure App Service. Contiene una serie de trabajos (jobs) que son necesarios para garantizar que la aplicación funcione correctamente en el entorno de Azure.
 
-Este flujo de trabajo se activa automáticamente cada vez que se realiza un push a la rama main del repositorio. GitHub Actions ejecuta los pasos necesarios, como la instalación de dependencias, la construcción del proyecto y finalmente, el despliegue de la aplicación en Azure.
+Este flujo de trabajo se activa automáticamente cada vez que se realiza un pull request a la rama main del repositorio. GitHub Actions ejecuta los pasos necesarios, como la instalación de dependencias, la construcción del proyecto y finalmente, el despliegue de la aplicación en Azure.
 
 ## Ambiente QA
 
